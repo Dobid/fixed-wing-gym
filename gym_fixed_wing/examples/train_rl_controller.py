@@ -96,7 +96,7 @@ def monitor_training(_locals, _globals):
                                   writer=_locals["writer"], timestep=_locals["self"].num_timesteps)
 
         if now - render_check["time"] >= 30:
-            for render_file in os.listdir(os.path.join(model_folder, "render")):
+            for render_file in os.listdir(os.path.join(model_folder, "render")): # DO: bugs out if render folder is non existing TODO: create render folder if non existing
                 if render_file not in render_check["files"]:
                     render_check["files"].append(render_file)
                     summary = tf.Summary.Value(tag="render", image=object_to_summary_image(

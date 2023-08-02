@@ -15,7 +15,8 @@ setup(
     install_requires=[
         "cycler>=0.10.0",
         "future>=0.17.1",
-        "gym>=0.12.5",
+        # "gym>=0.12.5", # DO: make it use gym 0.12.5
+        "gym==0.12.5",
         "kiwisolver>=1.1.0",
         "matplotlib>=3.1.0",
         "numpy>=1.16.4",
