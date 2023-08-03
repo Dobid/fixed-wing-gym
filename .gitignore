@@ -105,3 +105,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# render folder
+render/
+
+# tensorboard logs
+tb/
+
