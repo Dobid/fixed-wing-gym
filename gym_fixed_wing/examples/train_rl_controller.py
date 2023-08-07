@@ -209,6 +209,7 @@ if __name__ == '__main__':
     model_folder = os.path.join("models", args.model_name)
     if os.path.exists(model_folder):
         load = True
+        os.makedirs(os.path.join(model_folder, "render"), exist_ok=True)
     else:
         load = False
         if args.env_config_path is None:
