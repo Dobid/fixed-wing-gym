@@ -186,6 +186,7 @@ if __name__ == '__main__':
     test_set_path = args.test_set_path
     if args.policy is None or args.policy == "MLP":
         policy = MlpPolicy
+        config_path = "fixed_wing_config_mlp.json"
     elif args.policy == "CNN":
         try:
             from stable_baselines.common.policies import CnnMlpPolicy
@@ -213,7 +214,10 @@ if __name__ == '__main__':
     else:
         load = False
         if args.env_config_path is None:
-            config_path = "fixed_wing_config.json"
+            if args.policy == "CNN":
+                config_path = "fixed_wing_config_cnn.json"
+            else:
+                config_path = "fixed_wing_config_mlp.json"
         else:
             config_path = args.env_config_path
         os.makedirs(model_folder)
