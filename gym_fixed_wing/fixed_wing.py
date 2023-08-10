@@ -230,6 +230,8 @@ class FixedWingAircraft(gym.Env):
         """
         assert 0 <= level <= 1
         self._curriculum_level = level
+
+        # DO: setting the initial states according to curriculum level
         if "states" in self.cfg["simulator"]:
             for state in self.cfg["simulator"]["states"]:
                 state = copy.copy(state)
@@ -244,6 +246,7 @@ class FixedWingAircraft(gym.Env):
                             val = np.radians(val)
                     setattr(self.simulator.state[state_name], prop, val)
 
+        # DO: settings the targets according to curriculum level
         self._target_props_init = {"states": {}}
         for attr, val in self.cfg["target"].items():
             if attr == "states":
@@ -305,7 +308,7 @@ class FixedWingAircraft(gym.Env):
             state = {}
             for init_state in ["roll", "pitch", "velocity_u"]:
                 state[init_state] = self.sampler.draw_sample(init_state)
-        self.simulator.reset(state, **sim_reset_kw)
+        self.simulator.reset(state, **sim_reset_kw) # DO: Here is where we reset the simulator, resetting the intial states too (uniform sampling between min and max, curriculum modified, values)
         self.sample_simulator_parameters()
         self.sample_target()
         if target is not None:
@@ -489,7 +492,7 @@ class FixedWingAircraft(gym.Env):
                 high = max(min(high, var_val + delta), low)
 
             if self.sampler is None:
-                initial_value = self.np_random.uniform(low, high)
+                initial_value = self.np_random.uniform(low, high) # DO: Here is where we sample the initial value of the target
             else:
                 initial_value = self.sampler.draw_sample("{}_target".format(target_var_name), (low, high))
             if var_props["class"] in "linear":
