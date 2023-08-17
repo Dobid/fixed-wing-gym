@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug train_rl_controller.py",
+            "type": "python",
+            "cwd" : "${workspaceFolder}/gym_fixed_wing/examples/",
+            "request": "launch",
+            "program": "train_rl_controller.py",
+            "console": "integratedTerminal",
+            "args": ["debug_cnn", "2", "--policy", "CNN"],
+            "justMyCode": false
+        },
+
+        {
+            "name": "Python: Debug read_npy",
+            "type": "python",
+            "cwd" : "${workspaceFolder}/gym_fixed_wing/examples/test_sets",
+            "request": "launch",
+            "program": "read_npy.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+
+        {
+            "name": "Python: Debug evaluate_controller.py",
+            "type": "python",
+            "cwd" : "${workspaceFolder}/gym_fixed_wing/examples/",
+            "request": "launch",
+            "program": "evaluate_controller.py",
+            "args": ["test_sets/test_set_wind_severe_step20-20-3.npy", "--num-envs", "1", "--model-path", "models/my_cnn_controller/model.pkl", "--turbulence-intensity", "severe"],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        }
+    ]
+}
