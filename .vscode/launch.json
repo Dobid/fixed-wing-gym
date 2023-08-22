@@ -8,9 +8,10 @@
             "name": "Python: Train",
             "type": "python",
             "request": "launch",
-            "cwd": "gym_fixed_wing/examples",
+            "cwd": "${workspaceFolder}/gym_fixed_wing/examples",
             "program": "train_rl_controller.py",
             "args": ["debug_model", "2", "--policy", "CNN"],
+            "console": "integratedTerminal",
             "justMyCode": false
         },
 
