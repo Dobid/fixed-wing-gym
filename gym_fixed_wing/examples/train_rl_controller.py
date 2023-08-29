@@ -77,6 +77,7 @@ def monitor_training(_locals, _globals):
             for info_k, info_v in info.items():
                 print("\n{}:\n\t".format(info_k) + "\n\t".join(["{:<10s}{:.2f}".format(k, np.nanmean(v)) for k, v in info_v.items()]))
 
+        print(f"Curriculum level: {curriculum_level}")
         if curriculum_level < 1:
             if curriculum_cooldown <= 0:
                 if np.mean(info["success"]["all"]) > curriculum_level:
