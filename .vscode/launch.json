@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Debug train_rl_controller.py",
+            "name": "Python: Train",
             "type": "python",
-            "cwd" : "${workspaceFolder}/gym_fixed_wing/examples/",
             "request": "launch",
+            "cwd": "${workspaceFolder}/gym_fixed_wing/examples",
             "program": "train_rl_controller.py",
+            "args": ["debug_model", "2", "--policy", "CNN"],
             "console": "integratedTerminal",
-            "args": ["debug_cnn", "2", "--policy", "CNN"],
             "justMyCode": false
         },
 
