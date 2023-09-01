@@ -11,7 +11,8 @@ from collections import deque
 
 
 class FixedWingAircraft(gym.Env):
-    def __init__(self, config_path, sampler=None, sim_config_path=None, sim_parameter_path=None, config_kw=None, sim_config_kw=None):
+    def __init__(self, config_path, sampler=None, sim_config_path=None, sim_parameter_path=None, config_kw=None, sim_config_kw=None,
+                 render_on_reset=False):
         """
         A gym environment for fixed-wing aircraft, interfacing the python flight simulator PyFly to the openAI
         environment.
@@ -198,7 +199,7 @@ class FixedWingAircraft(gym.Env):
         self._rew_factors_init = copy.deepcopy(self.cfg["reward"]["factors"])
 
         self.training = True
-        self.render_on_reset = False
+        self.render_on_reset = render_on_reset
         self.render_on_reset_kw = {}
         self.save_on_reset = False
         self.save_on_reset_kw = {}
@@ -572,7 +573,7 @@ class FixedWingAircraft(gym.Env):
                         val = bool(val)
                 setattr(self.simulator, key, val)
 
-    def render(self, mode="plot", show=True, close=True, block=False, save_path=None):
+    def render(self, mode="plot", show=True, close=True, block=False, save_path=None, render_on_reset=True):
         """
         Visualize environment history. Plots of action and reward can be enabled through configuration file.
 

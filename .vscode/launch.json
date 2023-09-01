@@ -26,14 +26,25 @@
         },
 
         {
-            "name": "Python: Debug evaluate_controller.py",
+            "name": "Python: evaluate PPO Agent",
             "type": "python",
             "cwd" : "${workspaceFolder}/gym_fixed_wing/examples/",
             "request": "launch",
             "program": "evaluate_controller.py",
-            "args": ["test_sets/test_set_wind_severe_step20-20-3.npy", "--num-envs", "1", "--model-path", "models/my_cnn_controller/model.pkl", "--turbulence-intensity", "severe"],
+            "args": ["test_sets/test_set_wind_severe_step20-20-3.npy", "--num-envs", "1", "--model-path", "models/my_cnn_envs6_1/model.pkl", "--turbulence-intensity", "severe"],
             "console": "integratedTerminal",
             "justMyCode": false
-        }
+        },
+
+        {
+            "name": "Python: evaluate PID Agent",
+            "type": "python",
+            "cwd" : "${workspaceFolder}/gym_fixed_wing/examples/",
+            "request": "launch",
+            "program": "evaluate_controller.py",
+            "args": ["test_sets/test_set_wind_severe_step20-20-3.npy", "--num-envs", "1", "--PID", "--env-config-path", "../fixed_wing_config.json", "--turbulence-intensity", "severe"],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
     ]
 }

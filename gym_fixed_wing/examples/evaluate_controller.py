@@ -135,6 +135,8 @@ def evaluate_model_on_set(set_path, model, config_path=None, config_kw=None,
                                 if "all" not in res[metric]:
                                     res[metric]["all"] = []
                                 res[metric]["all"].append(info[i][metric])
+                    test_env.render(indices=0, mode="plot", show=True, block=True)
+                print(res)
 
         if len(scenarios) == 0:
             test_done = not any(active_envs)
@@ -154,6 +156,7 @@ def evaluate_model_on_set(set_path, model, config_path=None, config_kw=None,
         obs, rew, done, info = test_env.step(actions)
         for i, env_rew in enumerate(rew):
             res["rewards"][env_scen_i[i]].append(env_rew)
+
 
     if writer is not None:
         summaries = []
